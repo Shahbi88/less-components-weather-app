@@ -44,13 +44,14 @@ export default function Search(props) {
               <li>Humidity: {weatherData.humidity}%</li>
               <li>Wind Speed: {Math.round(weatherData.speed)} m/s</li>
               <li>Description: {weatherData.description}</li>
+              <li>Temperature: {Math.round(weatherData.temp)}</li>
             </ul>
           </div>
           <h4 className="mainCity col">
             <div id="city">
               {city} <img src={weatherData.iconUrl} alt="" />
             </div>
-            <WeatherTemperature />
+            <WeatherTemperature celsius={Math.round(weatherData.temp)} />
             <div>
               <small id="time">Time</small>
             </div>
