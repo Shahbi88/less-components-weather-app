@@ -10,12 +10,12 @@ export default function Search(props) {
 
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=667d9f573c8af4c33457be5d561a9148&units=metric`;
     axios.get(url).then((response) => {
-      const { temp, humidity } = response.data.main;
-      const { description } = response.data.weather[0];
-      const { speed } = response.data.wind;
-      const { date } = new Date(response.data.dt * 1000);
+      let { temp, humidity } = response.data.main;
+      let { description } = response.data.weather[0];
+      let { speed } = response.data.wind;
+      let iconUrl = `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`;
 
-      setWeatherData({ temp, humidity, description, speed });
+      setWeatherData({ temp, humidity, description, speed, iconUrl });
     });
   }
 
@@ -46,7 +46,9 @@ export default function Search(props) {
             </ul>
           </div>
           <h4 className="mainCity col">
-            <div id="city">{city}</div>
+            <div id="city">
+              {city} <img src={weatherData.iconUrl} alt="Weather Icon" />
+            </div>
             <div>
               <div className="temp">
                 <span className="units" id="temperature">
