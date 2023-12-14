@@ -91,3 +91,6 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.footer {
+  padding-bottom: 10px;
+}
