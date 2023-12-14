@@ -11,7 +11,6 @@ root.render(
   <StrictMode>
     <div className="card-body">
       <Header />
-
       <Search defaultCity="London" />
       <Footer />
     </div>

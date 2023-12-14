@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import WeatherTemperature from "./weatherTemperature";
 
 export default function Search(props) {
   let [city, setCity] = useState("City..");
@@ -47,14 +48,10 @@ export default function Search(props) {
           </div>
           <h4 className="mainCity col">
             <div id="city">
-              {city} <img src={weatherData.iconUrl} alt="Weather Icon" />
+              {city} <img src={weatherData.iconUrl} alt="" />
             </div>
+            <WeatherTemperature />
             <div>
-              <div className="temp">
-                <span className="units" id="temperature">
-                  {Math.round(weatherData.temp)} °C
-                </span>
-              </div>
               <small id="time">Time</small>
             </div>
           </h4>
