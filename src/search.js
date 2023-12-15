@@ -14,9 +14,10 @@ export default function Search(props) {
       let { temp, humidity } = response.data.main;
       let { description } = response.data.weather[0];
       let { speed } = response.data.wind;
-      let iconUrl = `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`;
+      let { date } = response.data.dt;
 
-      setWeatherData({ temp, humidity, description, speed, iconUrl });
+      let iconUrl = `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`;
+      setWeatherData({ temp, humidity, description, speed, iconUrl, date });
     });
   }
 
@@ -38,18 +39,19 @@ export default function Search(props) {
         <input type="submit" value="Search" className="search-form-button" />
       </form>
       {city && (
-        <div className="row">
-          <div className="h6 col">
+        <div>
+          <div className="h6">
             <ul>
               <li>Humidity: {weatherData.humidity}%</li>
               <li>Wind Speed: {Math.round(weatherData.speed)} m/s</li>
               <li>Description: {weatherData.description}</li>
-              <li>Temperature: {Math.round(weatherData.temp)}</li>
+              <li>Temperature: {Math.round(weatherData.temp)} °C</li>
+              <li>{weatherData.date}</li>
             </ul>
           </div>
-          <h4 className="mainCity col">
+          <h4 className="mainCity">
             <div id="city">
-              {city} <img src={weatherData.iconUrl} alt="" />
+              {city} <img className="icon" src={weatherData.iconUrl} alt="" />
             </div>
             <WeatherTemperature celsius={Math.round(weatherData.temp)} />
             <div>
